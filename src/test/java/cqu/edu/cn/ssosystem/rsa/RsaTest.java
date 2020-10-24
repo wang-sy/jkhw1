@@ -1,6 +1,5 @@
 package cqu.edu.cn.ssosystem.rsa;
 
-import com.mysql.cj.conf.ConnectionUrlParser;
 import cqu.edu.cn.ssosystem.controller.TokenController;
 import cqu.edu.cn.ssosystem.global.DBConnection;
 import cqu.edu.cn.ssosystem.global.ResData;

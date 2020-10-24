@@ -4,7 +4,7 @@ import cqu.edu.cn.ssosystem.controller.LoginController;
 import cqu.edu.cn.ssosystem.global.ResData;
 import cqu.edu.cn.ssosystem.model.Token;
 
-import javax.jws.WebService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,10 +57,17 @@ public class UserServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String userPhoneNumber = req.getParameter("user_phone_number");
-        String userPassword = req.getParameter("user_password");
+        String [] userPassword = req.getParameterValues("user_password");
         String appId = req.getParameter("app_id");
+        String n = req.getParameter("multiply");
+        String e = req.getParameter("publicKey");
 
-        ResData loginRes = null;
+        for(String temp: userPassword){
+            System.out.println(temp);
+        }
+
+
+        /*ResData loginRes = null;
         try {
             loginRes = this.myLoginController.doLogin(userPhoneNumber, userPassword, appId);
         } catch (SQLException throwables) {
@@ -73,7 +80,7 @@ public class UserServlet extends HttpServlet{
                 "\"error\":" + " \"" + (loginRes.isError() ? "true" : "false") + "\"," +
                 " \"data\":" + " \"" + loginRes.getData() + "\"" +
                 "}"
-        );
+        );*/
 
     }
 
