@@ -12,6 +12,8 @@ import java.util.Map;
  */
 public class Rsa {
 
+    public static Rsa globalRsa = null;
+
     PrimeNumber myPrimeNumber = null;
 
     HashMap<Pair, RsaKey> rsaTable = null; // 公钥-- > RSAKey
@@ -22,6 +24,14 @@ public class Rsa {
     public Rsa(){
         myPrimeNumber = new PrimeNumber(0x4fffff); // 约等于5e6的范围
         this.rsaTable = new HashMap<Pair, RsaKey>(); // 哈希
+    }
+
+    public static void generateGlobalRsa(){
+        globalRsa = new Rsa();
+    }
+
+    public static Rsa getGlobalRsa() {
+        return globalRsa;
     }
 
     /**
@@ -67,7 +77,7 @@ public class Rsa {
      * @param publicKey 用于查询的公钥
      * @return 查询到的私钥
      */
-    RsaKey searchKey(Pair publicKey){
+    public RsaKey searchKey(Pair publicKey){
         if(this.rsaTable.containsKey(publicKey)){ // 如果有相应的key，那么就直接返回
             return this.rsaTable.get(publicKey);
         }

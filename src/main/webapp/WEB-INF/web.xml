@@ -14,6 +14,11 @@
         <servlet-class>cqu.edu.cn.ssosystem.servlet.TokenServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Rsa</servlet-name>
+        <servlet-class>cqu.edu.cn.ssosystem.servlet.RsaServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -22,6 +27,11 @@
     <servlet-mapping>
         <servlet-name>Token</servlet-name>
         <url-pattern>/token</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Rsa</servlet-name>
+        <url-pattern>/rsa</url-pattern>
     </servlet-mapping>
 
 </web-app>

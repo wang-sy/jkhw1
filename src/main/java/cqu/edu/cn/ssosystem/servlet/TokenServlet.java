@@ -27,6 +27,9 @@ public class TokenServlet extends HttpServlet {
         String userToken = req.getParameter("token");
         String appId = req.getParameter("appId");
 
+        System.out.println(userToken);
+        System.out.println(appId);
+
         ResData res = null;
 
         try {
