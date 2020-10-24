@@ -3,6 +3,7 @@ package cqu.edu.cn.ssosystem.rsa;
 
 
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,14 +14,14 @@ public class Rsa {
 
     PrimeNumber myPrimeNumber = null;
 
-    HashMap<Pair<Long, Long>, RsaKey> rsaTable = null; // 公钥-- > RSAKey
+    HashMap<Pair, RsaKey> rsaTable = null; // 公钥-- > RSAKey
 
     /**
      * 初始化密钥类，管理一个素数表
      */
     public Rsa(){
         myPrimeNumber = new PrimeNumber(0x4fffff); // 约等于5e6的范围
-        this.rsaTable = new HashMap<Pair<Long, Long>, RsaKey>(); // 哈希
+        this.rsaTable = new HashMap<Pair, RsaKey>(); // 哈希
     }
 
     /**
@@ -51,12 +52,12 @@ public class Rsa {
             privateKeyNumber = d;
             mulNum = multi;
 
-        }while (this.rsaTable.containsKey(new Pair<Long, Long>(publicKeyNumber, mulNum))); // 做到这个不含有相同的公钥为止
+        }while (this.rsaTable.containsKey(new Pair(publicKeyNumber, mulNum))); // 做到这个不含有相同的公钥为止
 
 
         RsaKey insertKey = new RsaKey(mulNum, publicKeyNumber, privateKeyNumber);
         // 将钥匙插入
-        this.rsaTable.put(new Pair<Long, Long>(publicKeyNumber, mulNum), insertKey);
+        this.rsaTable.put(new Pair(publicKeyNumber, mulNum), insertKey);
 
         return insertKey; // 将钥匙返回
     }
@@ -66,7 +67,7 @@ public class Rsa {
      * @param publicKey 用于查询的公钥
      * @return 查询到的私钥
      */
-    RsaKey searchKey(Pair<Long, Long> publicKey){
+    RsaKey searchKey(Pair publicKey){
         if(this.rsaTable.containsKey(publicKey)){ // 如果有相应的key，那么就直接返回
             return this.rsaTable.get(publicKey);
         }

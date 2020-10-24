@@ -1,9 +1,8 @@
 package cqu.edu.cn.ssosystem.rsa;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
-import java.util.Random;
 
 /**
  * 描述素数的类，可以生成素数表，并且随机选择素数
