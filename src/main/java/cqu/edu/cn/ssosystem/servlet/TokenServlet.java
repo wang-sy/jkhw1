@@ -24,7 +24,7 @@ public class TokenServlet extends HttpServlet {
 
         System.out.println("我收到了请求");
 
-        String userToken = req.getParameter("token");
+        String userToken = req.getParameter("app_token");
         String appId = req.getParameter("appId");
 
         System.out.println(userToken);
